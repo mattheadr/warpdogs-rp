@@ -35,4 +35,9 @@ Em **qualquer uso público** (lives, vídeos, adaptações), você **deve** incl
 - **Dúvidas?**
 	Para usos não cobertos por esta licença (ex.: parcerias, edições impressas), entre em contato:
 	aindanãofeito@teste.com
-- 
+- **Legalidade:**
+	Esta licença é um contrato entre você e o autor. Violações podem resultar em ações legais.
+
+---
+
+*Última atualização: 19/05/2025*
