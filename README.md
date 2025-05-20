@@ -21,9 +21,12 @@
 ## 📂 Formatos Disponíveis  
 Escolha como jogar/ler:  
 
-[![Site Oficial](https://img.shields.io/badge/👾-Website%20Interativo-ff69b4)](https://mattheadr.github.io/warpdogs-rp/)  
+[![Site Oficial](https://img.shields.io/badge/👾-Website%20Interativo-ff69b4)](https://mattheadr.github.io/warpdogs-rp/) 
+
 [![HTML](https://img.shields.io/badge/🌐-Web%20(Offline)-blue)](https://mattheadr.github.io/warpdogs-rp/HTMLdocs)  (Ainda não disponível)
+
 [![PDF](https://img.shields.io/badge/📘-PDF%20(Offline)-brightgreen)](https://github.com/seuuser/warp-dogs-rpg/releases/download/v1.0/WarpDogs.pdf)  (Ainda não disponível)
+
 [![EPUB](https://img.shields.io/badge/📖-EPUB%20(eBooks)-orange)](https://github.com/seuuser/warp-dogs-rpg/releases/download/v1.0/WarpDogs.epub)  (Ainda não disponível)
 
 
