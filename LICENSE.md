@@ -23,10 +23,10 @@ Nenhuma adaptação (ex.: livros, apps, sistemas baseados neste RPG), pode ser v
 1. **Atribuição de Creditos:**
 Em **qualquer uso público** (lives, vídeos, adaptações), você **deve** incluir:
 	- Nome do RPG: `Warp Dogs`
-	- Link original: <https://github.com/mattheadr/warpdogs-rp/tree/main> ou <https://aindanaofeito.teste>
+	- Link original: <https://github.com/mattheadr/warpdogs-rp/> ou <https://aindanaofeito.teste>
 	- Autor: `Matt Head`
 
-	*(Exemplo: "Este jogo utiliza Warp Dogs, criado por Matt Head. Disponivel em: <https://github.com/mattheadr/warpdogs-rp/tree/main>")*
+	*(Exemplo: "Este jogo utiliza Warp Dogs, criado por Matt Head. Disponivel em: <https://github.com/mattheadr/warpdogs-rp/>")*
 
 ---
 
@@ -34,7 +34,7 @@ Em **qualquer uso público** (lives, vídeos, adaptações), você **deve** incl
 
 - **Dúvidas?**
 	Para usos não cobertos por esta licença (ex.: parcerias, edições impressas), entre em contato:
-	aindanãofeito@teste.com
+	aindanaofeito@teste.com
 - **Legalidade:**
 	Esta licença é um contrato entre você e o autor. Violações podem resultar em ações legais.
 
