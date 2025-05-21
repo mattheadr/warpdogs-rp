@@ -1,248 +1,114 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warp Dogs - Manual do Operador</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Michroma&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --neon-pink: #ff3cac;
-            --cyber-teal: #00f3ff;
-            --deep-space: #0a0a2e;
-            --retro-purple: #2a044a;
-            --hologram-blue: #7fffff;
-            --grid-line: rgba(255, 60, 172, 0.1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documento - Faroeste Espacial</title>
+  <style>
+    /* Fundo de estrelas animadas */
+    /* Define o cursor personalizado */
+    body {
+      cursor: url('cursor.ani'), auto;
+    
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      background: black;
+      overflow: hidden;
+      color: #ffd66b;
+    }
 
-        body {
-            font-family: 'Michroma', sans-serif;
-            background-color: var(--deep-space);
-            color: var(--hologram-blue);
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-image: 
-                linear-gradient(var(--grid-line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
+    .stars {
+      position: fixed;
+      width: 200%;
+      height: 200%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: starMove 60s linear infinite;
+      z-index: -1;
+    }
 
-        .cyber-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            border: 3px solid var(--neon-pink);
-            border-image: linear-gradient(45deg, var(--neon-pink), var(--cyber-teal)) 1;
-            box-shadow: 0 0 30px rgba(255, 60, 172, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
+    @keyframes starMove {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-50%, -50%); }
+    }
 
-        .cyber-container::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 48%,
-                var(--neon-pink) 50%,
-                transparent 52%
-            );
-            opacity: 0.1;
-            animation: scan 8s linear infinite;
-        }
+    .container {
+      max-width: 800px;
+      margin: 4rem auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 1px solid #ffd66b;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 0 20px #ffd66b77;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
+    h1, h2, h3 {
+      color: #ffcc33;
+    }
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-pink);
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 15px var(--neon-pink);
-            margin: 1rem 0;
-            position: relative;
-            display: inline-block;
-            padding: 0.5rem 2rem;
-            border: 2px solid var(--cyber-teal);
-        }
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #ffcc33;
+    }
 
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(10, 10, 46, 0.8);
-            border: 1px solid var(--cyber-teal);
-            margin: 2rem 0;
-        }
+    details[open] summary::after {
+      content: " ▲";
+    }
 
-        .toc-section {
-            padding: 1rem;
-            border: 1px solid var(--neon-pink);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
+    details summary::after {
+      content: " ▼";
+    }
 
-        .toc-section:hover {
-            background: rgba(255, 60, 172, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 0 15px var(--neon-pink);
-        }
+    a {
+      color: #ffdb70;
+    }
 
-        .toc-header {
-            color: var(--cyber-teal);
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 0.5rem;
-        }
+    /* Scrollbar personalizada opcional */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
 
-        .toc-list {
-            list-style: none;
-            padding-left: 0;
-        }
+    ::-webkit-scrollbar-thumb {
+      background: #ffd66b;
+    }
 
-        .toc-list li {
-            margin: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .toc-list li::before {
-            content: "▹";
-            color: var(--neon-pink);
-            position: absolute;
-            left: 0;
-        }
-
-        .content-section {
-            padding: 2rem;
-            margin: 2rem 0;
-            background: rgba(0, 243, 255, 0.05);
-            border-left: 3px solid var(--cyber-teal);
-        }
-
-        h2 {
-            color: var(--cyber-teal);
-            font-family: 'Orbitron', sans-serif;
-            border-bottom: 1px solid var(--neon-pink);
-            padding-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
-        }
-
-        .neon-quote {
-            padding: 1rem;
-            border: 1px solid var(--neon-pink);
-            margin: 1.5rem 0;
-            position: relative;
-            background: rgba(255, 60, 172, 0.05);
-            font-style: italic;
-        }
-
-        .neon-quote::before {
-            content: "❝";
-            color: var(--neon-pink);
-            font-size: 2rem;
-            position: absolute;
-            left: -10px;
-            top: -15px;
-        }
-
-        @keyframes scan {
-            from { transform: rotate(45deg) translateY(-50%); }
-            to { transform: rotate(45deg) translateY(50%); }
-        }
-
-        .glow {
-            animation: text-glow 1.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes text-glow {
-            from { text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink); }
-            to { text-shadow: 0 0 15px var(--neon-pink), 0 0 30px var(--neon-pink); }
-        }
-    </style>
+    ::-webkit-scrollbar-track {
+      background: #111;
+    }
+  </style>
 </head>
 <body>
-    <div class="cyber-container">
-        <header>
-            <h1 class="glow">Warp Dogs<br>Operational Manual</h1>
-            <p style="color: var(--cyber-teal);">v3.14.15.9 - Neural Network Edition</p>
-        </header>
+  <div class="stars"></div>
 
-        <div class="toc-grid">
-            <div class="toc-section">
-                <div class="toc-header">Core Systems</div>
-                <ul class="toc-list">
-                    <li>Quantum Drive Setup</li>
-                    <li>Neural Interface</li>
-                    <li>Plasma Weapons</li>
-                    <li>Shield Matrix</li>
-                </ul>
-            </div>
+  <div class="container">
+    <h1>Crônicas do Espaço Selvagem</h1>
 
-            <div class="toc-section">
-                <div class="toc-header">Protocols</div>
-                <ul class="toc-list">
-                    <li>Jump Sequence</li>
-                    <li>Alien Encounter</li>
-                    <li>Containment Breach</li>
-                    <li>Self-Destruct</li>
-                </ul>
-            </div>
-        </div>
+    <details>
+      <summary>Sumário</summary>
+      <ul>
+        <li><a href="#cap1">Capítulo 1: O Último Xerife</a></li>
+        <li><a href="#cap2">Capítulo 2: Poeira Cósmica</a></li>
+        <li><a href="#cap3">Capítulo 3: Duelo em Vênus 7</a></li>
+      </ul>
+    </details>
 
-        <div class="content-section">
-            <h2>Quantum Drive Operation</h2>
-            <div class="neon-quote">
-                "Never calculate jump coordinates on an empty stomach."<br>
-                - Captain Zeta-9, Last Transmission
-            </div>
-            <p>Engaging the quantum drive requires:</p>
-            <ul class="toc-list">
-                <li>Stable power flow (≥ 95%)</li>
-                <li>Neural handshake confirmation</li>
-                <li>Clear jump vector</li>
-                <li>Approval from at least 2 crew members</li>
-            </ul>
-        </div>
+    <hr />
 
-        <div class="content-section">
-            <h2>Neural Interface Safety</h2>
-            <p>WARNING: Direct brain coupling may cause:</p>
-            <ul class="toc-list">
-                <li>Temporal disorientation</li>
-                <li>Reality bleed-through</li>
-                <li>Spontaneous polyglotism</li>
-                <li>Existential euphoria</li>
-            </ul>
-        </div>
-    </div>
+    <h2 id="cap1">Capítulo 1: O Último Xerife</h2>
+    <p>
+      Em um mundo onde a lei é mantida a laser e a justiça viaja mais rápido que a luz, restou apenas um homem para proteger os confins da galáxia.
+    </p>
 
-    <script>
-        document.querySelectorAll('.toc-section').forEach(section => {
-            section.addEventListener('click', () => {
-                section.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    section.style.transform = 'scale(1)';
-                }, 100);
-            });
-        });
+    <h2 id="cap2">Capítulo 2: Poeira Cósmica</h2>
+    <p>
+      A poeira de um planeta abandonado levanta suspeitas — e também segredos enterrados sob anos-luz de silêncio.
+    </p>
 
-        // Efeito de animação contínua para bordas
-        const container = document.querySelector('.cyber-container');
-        setInterval(() => {
-            const hue = Math.random() * 360;
-            container.style.borderImage = `linear-gradient(45deg, hsl(${hue}, 100%, 50%), hsl(${hue + 60}, 100%, 50%)) 1`;
-        }, 3000);
-    </script>
+    <h2 id="cap3">Capítulo 3: Duelo em Vênus 7</h2>
+    <p>
+      O sol quase apagado se põe atrás das torres metálicas enquanto dois pistoleiros se encaram em silêncio. O primeiro a sacar pode salvar o universo... ou destruí-lo.
+    </p>
+  </div>
 </body>
 </html>
