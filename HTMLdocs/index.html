@@ -1,62 +1,290 @@
-<h2><strong>Sumário Warp Dogs</strong></h3>
-  <hr>
-  <h4><strong><a href="https://mattheadr.github.io/warpdogs-rp/HTMLdocs/1%20-%20Introdu%C3%A7%C3%A3o%20ao%20Mundo/">1.
-        Introdução ao Mundo</a></strong></h4>
-  <ul>
-    <li><strong><a
-          href="https://mattheadr.github.io/warpdogs-rp/HTMLdocs/1%20-%20Introdu%C3%A7%C3%A3o%20ao%20Mundo/1-1%20o-cenario-galactico.html">1.1.
-          O Cenário Galáctico</a></strong></li>
-    <li><strong><a
-          href="https://mattheadr.github.io/warpdogs-rp/HTMLdocs/1%20-%20Introdu%C3%A7%C3%A3o%20ao%20Mundo/1-2%20o-papel-dos-mercenarios.html">1.2.
-          O Papel dos Mercenários</a></strong></li>
-  </ul>
-  <hr>
-  <h4><strong>2. Criação de Personagens</strong></h4>
-  <ul>
-    <li><strong>2.1. Espécies/Raças</strong> </li>
-    <li><strong>2.2. Classes/Arquétipos</strong> </li>
-    <li><strong>2.3. Atributos e Habilidades</strong> </li>
-    <li><strong>2.4. Antecedentes e Motivações</strong> </li>
-    <li><strong>2.5. Equipamento Inicial</strong></li>
-  </ul>
-  <hr>
-  <h4><strong>3. Sistema de Regras</strong></h4>
-  <ul>
-    <li><strong>3.1. Mecânicas Básicas</strong> </li>
-    <li><strong>3.2. Combate</strong> </li>
-    <li><strong>3.3. Espaçonaves e Veículos</strong> </li>
-    <li><strong>3.4. Tecnologia e Cyberware</strong> </li>
-    <li><strong>3.5. Economia e Recursos</strong></li>
-  </ul>
-  <hr>
-  <h4><strong>4. O Universo em Detalhe</strong></h4>
-  <ul>
-    <li><strong>4.1. Planetas e Locais Importantes</strong> </li>
-    <li><strong>4.2. Facções e Organizações</strong> </li>
-    <li><strong>4.3. Ameaças</strong></li>
-  </ul>
-  <hr>
-  <h4><strong>5. Missões e Contratos</strong></h4>
-  <ul>
-    <li><strong>5.1. Tipos de Missões</strong> </li>
-    <li><strong>5.2. Sistema de Reputação</strong> </li>
-    <li><strong>5.3. Recompensas e Riscos</strong></li>
-  </ul>
-  <hr>
-  <h4><strong>6. Guia do Mestre (GM)</strong></h4>
-  <ul>
-    <li><strong>6.1. Como Narrar uma Campanha</strong> </li>
-    <li><strong>6.2. NPCs Memoráveis</strong> </li>
-    <li><strong>6.3. Enredos e Arcos</strong> </li>
-    <li><strong>6.4. Regras Opcionais</strong></li>
-  </ul>
-  <hr>
-  <h4><strong>7. Apêndices</strong></h4>
-  <ul>
-    <li><strong>7.1. Tabelas de Referência Rápida</strong> </li>
-    <li><strong>7.2. Glossário de Termos</strong> </li>
-    <li><strong>7.3. Ficha de Personagem</strong> </li>
-    <li><strong>7.4. Missão Exemplo</strong></li>
-  </ul>
-  <hr>
-  <p><em>Última Atualização: 19/05/2025</em></p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crônicas do Espaço Exterior</title>
+    <style>
+        :root {
+            --primary: #d4af37; /* Dourado envelhecido */
+            --secondary: #5a2c82; /* Roxo espacial */
+            --dark: #1a1a2e; /* Azul escuro do espaço */
+            --light: #e6e6e6; /* Branco suave */
+            --accent: #c53d3d; /* Vermelho ferrugem */
+            --text: #f0f0f0; /* Texto claro */
+            --parchment: #f5e7c1; /* Cor de pergaminho */
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle at center, var(--secondary) 0%, var(--dark) 100%);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(26, 26, 46, 0.9);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--primary);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: var(--light);
+            font-size: 1.1rem;
+        }
+
+        .toc-container {
+            background-color: rgba(90, 44, 130, 0.3);
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .toc-header::after {
+            content: "▼";
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .toc-header.collapsed::after {
+            content: "►";
+        }
+
+        .toc-content {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--primary);
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .toc-content.collapsed {
+            max-height: 0 !important;
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .toc-list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .toc-list li::before {
+            content: "✦";
+            color: var(--accent);
+            position: absolute;
+            left: -20px;
+        }
+
+        .toc-list a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .toc-list a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .document-content {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(245, 231, 193, 0.05);
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 1px solid var(--secondary);
+            padding-bottom: 5px;
+            margin-top: 30px;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--accent);
+            margin-top: 25px;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid var(--primary);
+            padding: 10px 15px;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--primary);
+            font-size: 0.9rem;
+            color: var(--light);
+        }
+
+        /* Efeitos de faroeste espacial */
+        .space-western-border {
+            height: 5px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--accent) 20%, 
+                var(--primary) 50%, 
+                var(--accent) 80%, 
+                transparent 100%);
+            margin: 20px 0;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Crônicas do Espaço Exterior</h1>
+            <p class="subtitle">Relatos da Fronteira Interestelar</p>
+            <div class="space-western-border"></div>
+        </header>
+
+        <div class="toc-container">
+            <div class="toc-header" id="tocHeader">
+                Sumário da Jornada
+            </div>
+            <div class="toc-content" id="tocContent">
+                <ul class="toc-list">
+                    <li><a href="#capitulo1">Capítulo 1: A Estação Perdida</a></li>
+                    <li><a href="#capitulo2">Capítulo 2: Os Mercenários de Tau Ceti</a></li>
+                    <li><a href="#capitulo3">Capítulo 3: O Cerco de Nova Texas</a></li>
+                    <li><a href="#capitulo4">Capítulo 4: A Corrida do Asteróide</a></li>
+                    <li><a href="#capitulo5">Capítulo 5: O Xerife de Proxima Centauri</a></li>
+                    <li><a href="#apendices">Apêndices e Referências</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="document-content">
+            <h2 id="capitulo1">Capítulo 1: A Estação Perdida</h2>
+            <p>Nos confins do setor Orion-9, onde as leis da Terra já não ecoam com força, encontra-se a Estação Perdida. Construída nos restos de um cargueiro de colonização do século XXII, agora serve de refúgio para contrabandistas, caçadores de recompensa e aventureiros em fuga.</p>
+
+            <div class="highlight">
+                "Nenhum homem é dono de suas ações nesta parte do cosmos. Aqui, somos todos reféns das estrelas e da sede por créditos." - Capitão Elias "Lobo Solitário" Marksen
+            </div>
+
+            <p>Foi em meio ao brilho avermelhado da nebulosa próxima que encontramos a primeira pista sobre o desaparecimento da colônia de Miners' Hope. Os sensores captavam apenas interferência, mas os olhos treinados de um velho caubói espacial sabem quando algo não cheira bem.</p>
+
+            <h3>O Encontro no Saloon Interestelar</h3>
+            <p>O Last Chance Saloon era o único lugar na estação onde se podia encontrar informação confiável - desde que você tivesse os créditos certos ou estivesse disposto a pagar em balas de plasma. Foi lá que conhecemos a engenheira-chefe Rook, uma ex-funcionária da Miners' Hope com um segredo e um braço cibernético que valia mais que toda a estação.</p>
+
+            <h2 id="capitulo2">Capítulo 2: Os Mercenários de Tau Ceti</h2>
+            <p>Quando os Mercs de Tau Ceti colocam seu selo em um trabalho, você sabe que coisas grandes estão por vir. Eles não se envolvem com pequenos roubos ou proteção de caravanas - seu negócio é guerra, em escala planetária.</p>
+
+            <p>Nosso encontro com o esquadrão Vermelho foi acidental, mas como diz o velho ditado da fronteira: "No espaço, não existem acidentes, apenas oportunidades mal disfarçadas". Eles estavam atrás da mesma coisa que nós, mas por motivos muito diferentes.</p>
+
+            <div class="space-western-border"></div>
+
+            <h2 id="capitulo3">Capítulo 3: O Cerco de Nova Texas</h2>
+            <p>Nova Texas não era um planeta, mas sim uma enorme estação agrícola flutuante nos anéis de Saturno. Quando os piratas do Cinturão de Kuiper colocaram suas garras nela, ninguém esperava que um punhado de fazendeiros espaciais resistiria por tanto tempo.</p>
+
+            <h2 id="capitulo4">Capítulo 4: A Corrida do Asteróide</h2>
+            <p>A maior corrida desde a descoberta do Hiperdrive aconteceu quando o asteróide 47-Kappa entrou no sistema carregando uma carga de cristais de antimatéria pura. Cada facção, legal ou não, enviou seus melhores pilotos para a caça.</p>
+
+            <h2 id="capitulo5">Capítulo 5: O Xerife de Proxima Centauri</h2>
+            <p>Numa galáxia sem lei, um homem decidiu fazer a diferença. O Xerife Jax Orion não usava um distintivo comum - seu emblema era feito de um fragmento do primeiro meteorito que atingiu sua colônia natal. Sua jurisdição? Onde quer que a injustiça encontrasse.</p>
+
+            <h2 id="apendices">Apêndices e Referências</h2>
+            <p>Mapas dos sistemas mencionados, glossário de termos técnicos e notas sobre a tecnologia do universo Space Western.</p>
+        </div>
+
+        <footer>
+            Documento registrado no Arquivo Galáctico - Setor Sol-3 | Terra<br>
+            Última atualização: 3187.04.15 (Calendário da Federação)
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tocHeader = document.getElementById('tocHeader');
+            const tocContent = document.getElementById('tocContent');
+
+            // Definir altura máxima inicial baseada no conteúdo
+            tocContent.style.maxHeight = tocContent.scrollHeight + 'px';
+
+            tocHeader.addEventListener('click', function() {
+                this.classList.toggle('collapsed');
+                tocContent.classList.toggle('collapsed');
+
+                if (tocContent.classList.contains('collapsed')) {
+                    tocContent.style.maxHeight = '0';
+                } else {
+                    tocContent.style.maxHeight = tocContent.scrollHeight + 'px';
+                }
+            });
+
+            // Suavizar rolagem para âncoras
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
