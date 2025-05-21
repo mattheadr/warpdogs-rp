@@ -3,288 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crônicas do Espaço Exterior</title>
+    <title>Warp Dogs - Manual do Operador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Michroma&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #d4af37; /* Dourado envelhecido */
-            --secondary: #5a2c82; /* Roxo espacial */
-            --dark: #1a1a2e; /* Azul escuro do espaço */
-            --light: #e6e6e6; /* Branco suave */
-            --accent: #c53d3d; /* Vermelho ferrugem */
-            --text: #f0f0f0; /* Texto claro */
-            --parchment: #f5e7c1; /* Cor de pergaminho */
+            --neon-pink: #ff3cac;
+            --cyber-teal: #00f3ff;
+            --deep-space: #0a0a2e;
+            --retro-purple: #2a044a;
+            --hologram-blue: #7fffff;
+            --grid-line: rgba(255, 60, 172, 0.1);
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background-color: var(--dark);
-            color: var(--text);
+            font-family: 'Michroma', sans-serif;
+            background-color: var(--deep-space);
+            color: var(--hologram-blue);
             line-height: 1.6;
             margin: 0;
-            padding: 0;
-            background-image: radial-gradient(circle at center, var(--secondary) 0%, var(--dark) 100%);
+            padding: 20px;
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: rgba(26, 26, 46, 0.9);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-            border: 1px solid var(--primary);
-            border-radius: 5px;
-            margin-top: 30px;
-            margin-bottom: 30px;
+        .cyber-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border: 3px solid var(--neon-pink);
+            border-image: linear-gradient(45deg, var(--neon-pink), var(--cyber-teal)) 1;
+            box-shadow: 0 0 30px rgba(255, 60, 172, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 48%,
+                var(--neon-pink) 50%,
+                transparent 52%
+            );
+            opacity: 0.1;
+            animation: scan 8s linear infinite;
         }
 
         header {
             text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px dashed var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
         }
 
         h1 {
-            color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-pink);
             font-size: 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-
-        .subtitle {
-            font-style: italic;
-            color: var(--light);
-            font-size: 1.1rem;
-        }
-
-        .toc-container {
-            background-color: rgba(90, 44, 130, 0.3);
-            border: 1px solid var(--primary);
-            border-radius: 5px;
-            padding: 15px;
-            margin: 20px 0;
+            letter-spacing: 4px;
+            text-shadow: 0 0 15px var(--neon-pink);
+            margin: 1rem 0;
             position: relative;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border: 2px solid var(--cyber-teal);
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(10, 10, 46, 0.8);
+            border: 1px solid var(--cyber-teal);
+            margin: 2rem 0;
+        }
+
+        .toc-section {
+            padding: 1rem;
+            border: 1px solid var(--neon-pink);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .toc-section:hover {
+            background: rgba(255, 60, 172, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--neon-pink);
         }
 
         .toc-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .toc-header::after {
-            content: "▼";
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-        }
-
-        .toc-header.collapsed::after {
-            content: "►";
-        }
-
-        .toc-content {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed var(--primary);
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .toc-content.collapsed {
-            max-height: 0 !important;
-            border-top: none;
-            padding-top: 0;
-            margin-top: 0;
+            color: var(--cyber-teal);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 0.5rem;
         }
 
         .toc-list {
-            list-style-type: none;
-            padding-left: 20px;
+            list-style: none;
+            padding-left: 0;
         }
 
         .toc-list li {
-            margin-bottom: 8px;
+            margin: 0.5rem 0;
             position: relative;
+            padding-left: 1.5rem;
         }
 
         .toc-list li::before {
-            content: "✦";
-            color: var(--accent);
+            content: "▹";
+            color: var(--neon-pink);
             position: absolute;
-            left: -20px;
+            left: 0;
         }
 
-        .toc-list a {
-            color: var(--light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .toc-list a:hover {
-            color: var(--primary);
-            text-decoration: underline;
-        }
-
-        .document-content {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: rgba(245, 231, 193, 0.05);
-            border: 1px solid var(--primary);
-            border-radius: 5px;
+        .content-section {
+            padding: 2rem;
+            margin: 2rem 0;
+            background: rgba(0, 243, 255, 0.05);
+            border-left: 3px solid var(--cyber-teal);
         }
 
         h2 {
-            color: var(--primary);
-            border-bottom: 1px solid var(--secondary);
-            padding-bottom: 5px;
-            margin-top: 30px;
-            font-size: 1.8rem;
+            color: var(--cyber-teal);
+            font-family: 'Orbitron', sans-serif;
+            border-bottom: 1px solid var(--neon-pink);
+            padding-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
         }
 
-        h3 {
-            color: var(--accent);
-            margin-top: 25px;
-            font-size: 1.4rem;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        .highlight {
-            background-color: rgba(212, 175, 55, 0.1);
-            border-left: 3px solid var(--primary);
-            padding: 10px 15px;
-            margin: 15px 0;
+        .neon-quote {
+            padding: 1rem;
+            border: 1px solid var(--neon-pink);
+            margin: 1.5rem 0;
+            position: relative;
+            background: rgba(255, 60, 172, 0.05);
             font-style: italic;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px dashed var(--primary);
-            font-size: 0.9rem;
-            color: var(--light);
+        .neon-quote::before {
+            content: "❝";
+            color: var(--neon-pink);
+            font-size: 2rem;
+            position: absolute;
+            left: -10px;
+            top: -15px;
         }
 
-        /* Efeitos de faroeste espacial */
-        .space-western-border {
-            height: 5px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                var(--accent) 20%, 
-                var(--primary) 50%, 
-                var(--accent) 80%, 
-                transparent 100%);
-            margin: 20px 0;
-            opacity: 0.7;
+        @keyframes scan {
+            from { transform: rotate(45deg) translateY(-50%); }
+            to { transform: rotate(45deg) translateY(50%); }
+        }
+
+        .glow {
+            animation: text-glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes text-glow {
+            from { text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink); }
+            to { text-shadow: 0 0 15px var(--neon-pink), 0 0 30px var(--neon-pink); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="cyber-container">
         <header>
-            <h1>Crônicas do Espaço Exterior</h1>
-            <p class="subtitle">Relatos da Fronteira Interestelar</p>
-            <div class="space-western-border"></div>
+            <h1 class="glow">Warp Dogs<br>Operational Manual</h1>
+            <p style="color: var(--cyber-teal);">v3.14.15.9 - Neural Network Edition</p>
         </header>
 
-        <div class="toc-container">
-            <div class="toc-header" id="tocHeader">
-                Sumário da Jornada
-            </div>
-            <div class="toc-content" id="tocContent">
+        <div class="toc-grid">
+            <div class="toc-section">
+                <div class="toc-header">Core Systems</div>
                 <ul class="toc-list">
-                    <li><a href="#capitulo1">Capítulo 1: A Estação Perdida</a></li>
-                    <li><a href="#capitulo2">Capítulo 2: Os Mercenários de Tau Ceti</a></li>
-                    <li><a href="#capitulo3">Capítulo 3: O Cerco de Nova Texas</a></li>
-                    <li><a href="#capitulo4">Capítulo 4: A Corrida do Asteróide</a></li>
-                    <li><a href="#capitulo5">Capítulo 5: O Xerife de Proxima Centauri</a></li>
-                    <li><a href="#apendices">Apêndices e Referências</a></li>
+                    <li>Quantum Drive Setup</li>
+                    <li>Neural Interface</li>
+                    <li>Plasma Weapons</li>
+                    <li>Shield Matrix</li>
+                </ul>
+            </div>
+
+            <div class="toc-section">
+                <div class="toc-header">Protocols</div>
+                <ul class="toc-list">
+                    <li>Jump Sequence</li>
+                    <li>Alien Encounter</li>
+                    <li>Containment Breach</li>
+                    <li>Self-Destruct</li>
                 </ul>
             </div>
         </div>
 
-        <div class="document-content">
-            <h2 id="capitulo1">Capítulo 1: A Estação Perdida</h2>
-            <p>Nos confins do setor Orion-9, onde as leis da Terra já não ecoam com força, encontra-se a Estação Perdida. Construída nos restos de um cargueiro de colonização do século XXII, agora serve de refúgio para contrabandistas, caçadores de recompensa e aventureiros em fuga.</p>
-
-            <div class="highlight">
-                "Nenhum homem é dono de suas ações nesta parte do cosmos. Aqui, somos todos reféns das estrelas e da sede por créditos." - Capitão Elias "Lobo Solitário" Marksen
+        <div class="content-section">
+            <h2>Quantum Drive Operation</h2>
+            <div class="neon-quote">
+                "Never calculate jump coordinates on an empty stomach."<br>
+                - Captain Zeta-9, Last Transmission
             </div>
-
-            <p>Foi em meio ao brilho avermelhado da nebulosa próxima que encontramos a primeira pista sobre o desaparecimento da colônia de Miners' Hope. Os sensores captavam apenas interferência, mas os olhos treinados de um velho caubói espacial sabem quando algo não cheira bem.</p>
-
-            <h3>O Encontro no Saloon Interestelar</h3>
-            <p>O Last Chance Saloon era o único lugar na estação onde se podia encontrar informação confiável - desde que você tivesse os créditos certos ou estivesse disposto a pagar em balas de plasma. Foi lá que conhecemos a engenheira-chefe Rook, uma ex-funcionária da Miners' Hope com um segredo e um braço cibernético que valia mais que toda a estação.</p>
-
-            <h2 id="capitulo2">Capítulo 2: Os Mercenários de Tau Ceti</h2>
-            <p>Quando os Mercs de Tau Ceti colocam seu selo em um trabalho, você sabe que coisas grandes estão por vir. Eles não se envolvem com pequenos roubos ou proteção de caravanas - seu negócio é guerra, em escala planetária.</p>
-
-            <p>Nosso encontro com o esquadrão Vermelho foi acidental, mas como diz o velho ditado da fronteira: "No espaço, não existem acidentes, apenas oportunidades mal disfarçadas". Eles estavam atrás da mesma coisa que nós, mas por motivos muito diferentes.</p>
-
-            <div class="space-western-border"></div>
-
-            <h2 id="capitulo3">Capítulo 3: O Cerco de Nova Texas</h2>
-            <p>Nova Texas não era um planeta, mas sim uma enorme estação agrícola flutuante nos anéis de Saturno. Quando os piratas do Cinturão de Kuiper colocaram suas garras nela, ninguém esperava que um punhado de fazendeiros espaciais resistiria por tanto tempo.</p>
-
-            <h2 id="capitulo4">Capítulo 4: A Corrida do Asteróide</h2>
-            <p>A maior corrida desde a descoberta do Hiperdrive aconteceu quando o asteróide 47-Kappa entrou no sistema carregando uma carga de cristais de antimatéria pura. Cada facção, legal ou não, enviou seus melhores pilotos para a caça.</p>
-
-            <h2 id="capitulo5">Capítulo 5: O Xerife de Proxima Centauri</h2>
-            <p>Numa galáxia sem lei, um homem decidiu fazer a diferença. O Xerife Jax Orion não usava um distintivo comum - seu emblema era feito de um fragmento do primeiro meteorito que atingiu sua colônia natal. Sua jurisdição? Onde quer que a injustiça encontrasse.</p>
-
-            <h2 id="apendices">Apêndices e Referências</h2>
-            <p>Mapas dos sistemas mencionados, glossário de termos técnicos e notas sobre a tecnologia do universo Space Western.</p>
+            <p>Engaging the quantum drive requires:</p>
+            <ul class="toc-list">
+                <li>Stable power flow (≥ 95%)</li>
+                <li>Neural handshake confirmation</li>
+                <li>Clear jump vector</li>
+                <li>Approval from at least 2 crew members</li>
+            </ul>
         </div>
 
-        <footer>
-            Documento registrado no Arquivo Galáctico - Setor Sol-3 | Terra<br>
-            Última atualização: 3187.04.15 (Calendário da Federação)
-        </footer>
+        <div class="content-section">
+            <h2>Neural Interface Safety</h2>
+            <p>WARNING: Direct brain coupling may cause:</p>
+            <ul class="toc-list">
+                <li>Temporal disorientation</li>
+                <li>Reality bleed-through</li>
+                <li>Spontaneous polyglotism</li>
+                <li>Existential euphoria</li>
+            </ul>
+        </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tocHeader = document.getElementById('tocHeader');
-            const tocContent = document.getElementById('tocContent');
-
-            // Definir altura máxima inicial baseada no conteúdo
-            tocContent.style.maxHeight = tocContent.scrollHeight + 'px';
-
-            tocHeader.addEventListener('click', function() {
-                this.classList.toggle('collapsed');
-                tocContent.classList.toggle('collapsed');
-
-                if (tocContent.classList.contains('collapsed')) {
-                    tocContent.style.maxHeight = '0';
-                } else {
-                    tocContent.style.maxHeight = tocContent.scrollHeight + 'px';
-                }
-            });
-
-            // Suavizar rolagem para âncoras
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 20,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+        document.querySelectorAll('.toc-section').forEach(section => {
+            section.addEventListener('click', () => {
+                section.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    section.style.transform = 'scale(1)';
+                }, 100);
             });
         });
+
+        // Efeito de animação contínua para bordas
+        const container = document.querySelector('.cyber-container');
+        setInterval(() => {
+            const hue = Math.random() * 360;
+            container.style.borderImage = `linear-gradient(45deg, hsl(${hue}, 100%, 50%), hsl(${hue + 60}, 100%, 50%)) 1`;
+        }, 3000);
     </script>
 </body>
 </html>
